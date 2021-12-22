@@ -1,8 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import SelectBreed from "components/SelectBreed";
-import SearchInput from "components/SearchInput";
+import dynamic from "next/dynamic";
 import { SITE_TITLE } from "utils/constants";
+
+const SelectBreed = dynamic(() => import("components/SelectBreed"))
+const SearchInput = dynamic(() => import("components/SearchInput"))
 
 interface Props {
   setCurrentBreed: (e: string | null) => void;

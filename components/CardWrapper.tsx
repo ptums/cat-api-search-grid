@@ -1,7 +1,8 @@
 import React from "react";
-import BreedCard from "components/BreedCard";
-import CatImage from "components/CatImage";
+import dynamic from "next/dynamic";
 import { Breed } from "types/Breed";
+const BreedCard = dynamic(() => import("components/BreedCard"))
+const CatImage = dynamic(() => import("components/CatImage"))
 
 interface Props {
   breeds: Breed[];

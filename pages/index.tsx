@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import useSWR from "swr";
 import Head from "next/head";
+import dynamic from "next/dynamic";
 import { BreedsContext } from "context/BreedsContext";
 import Container from "layouts/Container";
-import Loader from "components/Loader";
-import Error from "components/Error";
 import CardWrapper from "components/CardWrapper";
 import SearchBar from "components/SearchBar";
 import Pagination from "components/Pagination";
@@ -15,6 +14,9 @@ import {
 } from "utils/constants";
 import { fetchFromCatAPI, fetchAllBreeds } from "utils/api";
 import useDebounce from "hooks/useDebounce";
+
+const Loader = dynamic(() => import("components/Loader"))
+const Error = dynamic(() => import("components/Error"))
 
 const Home = () => {
   const [page, setPage] = useState<number>(0);

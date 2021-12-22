@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import AffectionStars from "components/AffectionStars";
+import dynamic from "next/dynamic";
 import CatImage from "components/CatImage";
 import { Breed } from "types/Breed";
+
+
+const AffectionStars = dynamic(() => import("components/AffectionStars"))
+
 
 const Card = ({ image, name, description, affection_level }: Breed) => {
   const [show, setShow] = useState<boolean>(false);
