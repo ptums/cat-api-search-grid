@@ -23,14 +23,16 @@ const Error = dynamic(() => import("components/Error"))
 
 const Home = () => {
   const [page, setPage] = useState<number>(0);
+  const [limit, setLimit] = useState<number>(20);
   const [currentUrl, setCurrentUrl] = useState<string>(CAT_API_BREED_URL);
   const [morePages, setMorePages] = useState<boolean>(true);
-  const [currentBreed, setCurrentBreed] = useState<string | null>(null);
+  const [currentBreedId, setCurrentBreedId] = useState<string | null>(null);
+  const [currentBreedLabel, setCurrentBreedLabel] = useState<string | null>(null);
   const [isSearch, setIsSearch] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const { breedList, setBreedList } = useContext(BreedsContext);
   const { data: breeds, error } = useSWR(
-    [currentUrl, page, currentBreed],
+    [currentUrl, page, currentBreedId, limit],
     fetchFromCatAPI
   );
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
@@ -46,8 +48,9 @@ const Home = () => {
         breeds.headers["pagination-limit"],
         10
       );
+      console.log(breeds.headers)
       const numPages: number = Math.floor(pageCount / amountPerPage) || 0;
-
+      console.log(numPages);
       if (page === numPages) {
         setMorePages(false);
       } else {
@@ -58,11 +61,13 @@ const Home = () => {
 
   // useEffect to change list to cats by a specific breed
   useEffect(() => {
-    if (currentBreed) {
+    if (currentBreedId) {
       setIsSearch(false);
       setCurrentUrl(CAT_API_SEARCH_BREED_URL);
+      setPage(0)
+      setLimit(25)
     }
-  }, [currentBreed]);
+  }, [currentBreedId]);
 
   // useEffect to set dog breed list to context
   useEffect(() => {
@@ -85,23 +90,34 @@ const Home = () => {
 
       if (findCat.length > 0) {
         const breedId = findCat[0].id;
-        setCurrentBreed(breedId);
+        const breedName = findCat[0].name
+        setCurrentBreedId(breedId);
+        setCurrentBreedLabel(breedName);
         setIsSearch(false);
         setCurrentUrl(CAT_API_SEARCH_BREED_URL);
+        setPage(0)
+        setLimit(25)
       }
     }
   }, [debouncedSearchTerm, breedList]);
 
+
+  // handle breed input
+  const handleCurrentBreed = (id, name) => {
+    setCurrentBreedId(id);
+    setCurrentBreedLabel(name);
+  }
+
   // reset search
   const resetSearch = () => {
-    setCurrentBreed(null);
+    setCurrentBreedId(null);
+    setCurrentBreedLabel(null);
     setCurrentUrl(CAT_API_BREED_URL);
     setIsSearch(true);
     setSearchTerm("");
-  };
-
-  // handle search input
-
+    setPage(0)
+    setLimit(20)
+  };  
   return (
     <Container>
       <Head>
@@ -109,7 +125,8 @@ const Home = () => {
       </Head>
       <SearchBar
         resetSearch={resetSearch}
-        setCurrentBreed={setCurrentBreed}
+        setCurrentBreed={handleCurrentBreed}
+        currentBreedLabel={currentBreedLabel}
         setSearchTerm={setSearchTerm}
         searchTerm={searchTerm}
       />

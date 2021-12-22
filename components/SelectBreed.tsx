@@ -1,7 +1,7 @@
 /**
  *  This component handles the breed selection from the drop down menu
  */
-import React, { Component, Fragment, useContext } from "react";
+import React, { Fragment, useContext } from "react";
 import { BreedsContext } from "context/BreedsContext";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
@@ -11,7 +11,7 @@ function classNames(...classes) {
 }
 
 interface Props {
-  setCurrentBreed: (e: string | null) => void;
+  setCurrentBreed: (id: string, name: string) => void;
   resetSearch: () => void;
 }
 
@@ -55,7 +55,7 @@ const SelectBreed = ({ setCurrentBreed, resetSearch }: Props) => {
                 <Menu.Item key={breed.id}>
                   {({ active }) => (
                     <button
-                      onClick={() => setCurrentBreed(breed.id)}
+                      onClick={() => setCurrentBreed(breed.id, breed.name)}
                       className={classNames(
                         active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                         "block px-4 py-2 text-lg"

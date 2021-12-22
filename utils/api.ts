@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { CAT_API_KEY,  CAT_API_BREED_URL } from "utils/constants";
+import { CAT_API_KEY, CAT_API_BREED_URL } from "utils/constants";
 /**
  *  This API call gets the full list of available breeds
  */
@@ -17,12 +17,12 @@ export const fetchAllBreeds = () => {
  *  This API call gets a breed list or a list of images based on breed and takes
  *  in query params url, page number, current breed
  */
-export const fetchFromCatAPI = (url:string, page: number, currentBreed: string | null) => {
+export const fetchFromCatAPI = (url: string, page: number, currentBreedId: string | null, limit: number) => {
   axios.defaults.headers.common['x-api-key'] = CAT_API_KEY;
 
   const params = {
-    limit: 20,
-    breed_ids: currentBreed,
+    limit,
+    breed_ids: currentBreedId,
     page
   };
 
