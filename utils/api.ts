@@ -15,7 +15,7 @@ export const fetchAllBreeds = () => {
 
 /**
  *  This API call gets a breed list or a list of images based on breed and takes
- *  in query params url, page number, current breed
+ *  in query params url, page number, current breed id, limit
  */
 export const fetchFromCatAPI = (url: string, page: number, currentBreedId: string | null, limit: number) => {
   axios.defaults.headers.common['x-api-key'] = CAT_API_KEY;
