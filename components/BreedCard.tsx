@@ -1,11 +1,12 @@
+/**
+ *  This component is the individual cat card with the cards image, breed description, name, affection rating
+ */
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import CatImage from "components/CatImage";
 import { Breed } from "types/Breed";
 
-
-const AffectionStars = dynamic(() => import("components/AffectionStars"))
-
+const AffectionStars = dynamic(() => import("components/AffectionStars"));
 
 const Card = ({ image, name, description, affection_level }: Breed) => {
   const [show, setShow] = useState<boolean>(false);
@@ -17,7 +18,7 @@ const Card = ({ image, name, description, affection_level }: Breed) => {
           <CatImage src={image.url} alt={name} />
         )}
         {(!image || Object.values(image).length <= 0) && (
-          <div 
+          <div
             className="w-full bg-gray-300 text-black flex flex-col justify-center align-center text-center"
             style={{ height: "300px" }}
           >

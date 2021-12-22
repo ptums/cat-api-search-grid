@@ -1,3 +1,6 @@
+/**
+ *  This component sets up the grid layout for each individual breed or card
+ */
 import React from "react";
 import dynamic from "next/dynamic";
 import { Breed } from "types/Breed";

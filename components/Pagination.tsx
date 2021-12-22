@@ -1,10 +1,15 @@
+/**
+ *  This component sets up the layout for the pagination buttons
+ */
 import React from "react";
 import Button from "components/Button";
+
 interface Props {
   setPage: (n: number) => void;
   page: number;
   morePages: boolean;
 }
+
 const Pagination = ({ setPage, page, morePages }: Props) => (
   <div className="w-full my-3 flex flex flex-row justify-center sm:justify-between">
     <Button 

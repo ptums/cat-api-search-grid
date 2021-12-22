@@ -1,8 +1,10 @@
+/**
+ *  This component handles the text input from the user's search
+ */
 import React from "react";
 
 interface Props {
   setSearchTerm: (e: string) => void;
-
   searchTerm: string;
 }
 

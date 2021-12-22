@@ -28,3 +28,10 @@ Deliverable
 
 Please send us your code in a private Github repo. If you’d like to not use Github, please send
 us a zip of your work instead.
+
+## Installation
+
+```
+ yarn
+ yarn dev
+ ```

@@ -1,3 +1,6 @@
+/**
+ *  This component displays the individual cat image
+ */
 import Image from "next/image";
 
 interface Props {

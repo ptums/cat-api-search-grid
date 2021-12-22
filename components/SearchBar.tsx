@@ -1,3 +1,6 @@
+/**
+ *  This component sets up the navigation for the page
+ */
 import React from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";

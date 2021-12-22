@@ -1,3 +1,6 @@
+/**
+ *  This page component is the parent component for all of the site functionality
+ */
 import React, { useState, useEffect, useContext } from "react";
 import useSWR from "swr";
 import Head from "next/head";

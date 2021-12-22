@@ -1,3 +1,6 @@
+/**
+ *  This component displays the cat's affection rating with star emojis
+ */
 import React from "react";
 
 interface Props {

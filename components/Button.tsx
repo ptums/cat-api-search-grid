@@ -1,5 +1,7 @@
+/**
+ *  This component is the pagination buttons
+ */
 import React from "react";
-
 
 interface Props {
   handlePage:() => void;

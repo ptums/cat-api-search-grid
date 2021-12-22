@@ -1,3 +1,6 @@
+/**
+ *  This custom hook handles debouncing when the user types in a search
+ */
 import React, { useState, useEffect } from "react";
 
 export default function useDebounce(value, delay) {

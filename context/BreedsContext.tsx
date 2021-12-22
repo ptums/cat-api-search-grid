@@ -1,9 +1,14 @@
+/**
+ *  This context provider handles setting/updating the breed list from the API call
+ */
+
 import React, { createContext, useState } from "react";
 
 interface Breed {
   id: string;
   name: string;
 }
+
 interface ContextProps {
   breedList: Breed[];
   setBreedList: (e: Breed[]) => void;

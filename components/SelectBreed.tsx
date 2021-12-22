@@ -1,3 +1,6 @@
+/**
+ *  This component handles the breed selection from the drop down menu
+ */
 import React, { Component, Fragment, useContext } from "react";
 import { BreedsContext } from "context/BreedsContext";
 import { Menu, Transition } from "@headlessui/react";
