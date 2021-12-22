@@ -8,7 +8,7 @@ const Card = ({ image, name, description, affection_level }: Breed) => {
 
   return (
     <>
-      <div className="border drop-shadow rounded-lg cursor-pointer card">
+      <div className="border drop-shadow rounded-lg cursor-pointer card relative">
         {image && Object.keys(image).includes("url") && (
           <CatImage src={image.url} alt={name} />
         )}
@@ -23,7 +23,7 @@ const Card = ({ image, name, description, affection_level }: Breed) => {
         <div
           onMouseOver={() => setShow(true)}
           onMouseLeave={() => setShow(false)}
-          className="p-4 absolute bottom-0 w-full name-banner transition ease-in-out delay-300 hover:h-full"
+          className="p-4 absolute bottom-0 left-0 w-full name-banner transition ease-in-out delay-300 hover:h-full"
         >
           <p className="text-white text-xl font-bold">{name}</p>
           {show && (
