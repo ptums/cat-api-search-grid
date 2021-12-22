@@ -47,10 +47,9 @@ const Home = () => {
       const amountPerPage: number = parseInt(
         breeds.headers["pagination-limit"],
         10
-      );
-      console.log(breeds.headers)
+      );  
       const numPages: number = Math.floor(pageCount / amountPerPage) || 0;
-      console.log(numPages);
+ 
       if (page === numPages) {
         setMorePages(false);
       } else {
