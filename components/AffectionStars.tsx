@@ -10,7 +10,7 @@ interface Props {
 const AffectionStars = ({ affectionLevel }: Props) => {
   return (
     <>
-      {[1, 2, 3, 4, 5].map((num) =>
+      {[1, 2, 3, 4, 5].map((num: number) =>
         num <= affectionLevel ? <span key={num}>★</span> : <span key={num}>☆</span>
       )}
     </>

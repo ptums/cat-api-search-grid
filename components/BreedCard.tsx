@@ -42,7 +42,9 @@ const Card = ({ image, name, description, affection_level }: Breed) => {
           )}
         </div>
       </div>
+       {/** Find every 4th element and move down by 3 */}
       <style jsx>{`
+       
         .card:nth-child(4n - 3) > .name-banner {
           background-color: rgba(52, 211, 153, 0.6);
         }

@@ -68,11 +68,11 @@ const Home = () => {
     }
   }, [currentBreedId]);
 
-  // useEffect to set dog breed list to context
+  // useEffect to set cat breed list to context
   useEffect(() => {
     if (!breedList) {
       fetchAllBreeds().then((res) => {
-        const allBreeds = res.data.map(({ id, name }) => ({ id, name }));
+        const allBreeds = res.data.map(({ id, name }: {id:string, name: string}) => ({ id, name }));
         setBreedList(allBreeds);
       });
     }
