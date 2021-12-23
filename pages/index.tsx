@@ -56,6 +56,7 @@ const Home = () => {
         setMorePages(true);
       }
     }
+
   }, [breeds?.headers, page]);
 
   // useEffect to change list to cats by a specific breed

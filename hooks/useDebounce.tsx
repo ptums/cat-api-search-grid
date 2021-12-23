@@ -10,7 +10,10 @@ const useDebounce = (value, delay) => {
     const handler = setTimeout(() => {
       setDebouncedValue(value);
     }, delay);
-
+    
+    /**  Since this runs just when the hook wants to unmount. If the user remounts it
+     *  by typing again the timer will be canceled and started again.
+     * */
     return () => {
       clearTimeout(handler);
     };
